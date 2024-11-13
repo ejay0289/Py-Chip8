@@ -13,7 +13,7 @@ Chip-8 is the hello world of emulator programming so anyone looking to try their
 ``` pip install pygame
 git clone https://github.com/ejay0289/Py-Chip8.git
 cd Py-Chip8
-chip8.py <path to romfile
+chip8.py <path to romfile>
 ```
 
 I had a lot of fun working on this and will definitely come back to rework it. Feel free to learn from my code or use it in your own emulator.
