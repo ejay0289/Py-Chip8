@@ -139,28 +139,23 @@ class Chip8:
 
 
 
-    def readProg(self, filename):
-        rom = self.convertProg(filename)
+    
+    def load_rom(self, filename):
+        rom = []
+
+        with open(filename, 'rb') as file:
+            rom_data = file.read()
+
+            for i in rom_data:
+                bit = i
+                rom.append(bit)
         
+
         offset = int('0x200', 16)
         for i in rom:
             self.memory[offset] = i
             offset += 1
 
-        # for byte in rom:
-        #     print(hex(byte)[2:].zfill(2),end='')
-    
-    def convertProg(self, filename):
-        rom = []
-
-        with open(filename, 'rb') as f:
-            wholeProgram = f.read()
-
-            for i in wholeProgram:
-                opcode = i
-                rom.append(opcode)
-        
-        return rom
 
     def clear(self):
         for i in range(len(self.grid)):
@@ -489,6 +484,6 @@ class Chip8:
 
 
 chip8 = Chip8()
-chip8.readProg(sys.argv[1])
+chip8.load_rom(sys.argv[1])
 chip8.mainLoop()
 
